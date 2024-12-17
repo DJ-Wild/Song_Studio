@@ -1,109 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости</title>
     <style>
-        /* Общие стили */
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000, #00FF00);
+            color: white;
+            text-align: center;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #000000, #00FF00);
-            background-size: 400% 400%;
-            animation: gradient 6s ease infinite;
-            color: white;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
         nav {
-            position: sticky;
-            top: 0;
+            background: black;
             width: 100%;
-            background-color: black;
+            padding: 10px 0;
+            position: absolute;
+            top: 0;
             display: flex;
             justify-content: center;
-            padding: 10px 0;
-            z-index: 1000;
         }
 
         nav a {
             color: white;
             text-decoration: none;
+            margin: 0 20px;
             font-size: 1.2em;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-            cursor: pointer;
+            transition: color 0.3s;
         }
 
         nav a:hover {
             color: #00FF00;
         }
 
-        h1 {
-            font-size: 2em;
-            font-weight: bold;
-            text-align: center;
-            margin: 20px 0;
-        }
-
         .news-container {
-            width: 90%;
-            max-width: 800px;
-            margin-top: 20px;
+            margin-top: 100px;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
         }
 
         .news-item {
-            background-color: #444;
-            color: white;
-            padding: 15px 20px;
+            background: #333;
+            padding: 15px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .news-item h2 {
-            font-size: 1.5em;
-            margin: 0 0 10px;
-        }
-
-        .news-item p {
-            margin: 5px 0;
-        }
-
-        .news-item .date {
-            font-size: 0.9em;
-            color: #888;
+        h1 {
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
+    <!-- Навигация -->
     <nav>
         <a href="https://dj-wild.github.io/Song_Studio/">Главная</a>
         <a href="https://dj-wild.github.io/Song_Studio/Schedule.html">График выхода песен</a>
     </nav>
-    <h1>Новости</h1>
-    <div class="news-container" id="newsContainer">
-        <!-- Новости будут загружены сюда -->
-    </div>
 
+    <!-- Заголовок -->
+    <h1>Новости</h1>
+
+    <!-- Контейнер новостей -->
     <script>
-        // Загружаем JSON с новостями
-        async function loadNews() {
-            try {
-                const response = await fetch('news.json'); // Файл JSON с новостями\n                const news = await response.json();\n\n                const container = document.getElementById('newsContainer');\n                container.innerHTML = ''; // Очищаем контейнер на случай перезагрузки\n\n                news.forEach(item => {\n                    const newsElement = document.createElement('div');\n                    newsElement.classList.add('news-item');\n                    newsElement.innerHTML = `\n                        <h2>${item.title}</h2>\n                        <p class=\"date\">${item.date}</p>\n                        <p>${item.content}</p>\n                    `;\n                    container.appendChild(newsElement);\n                });\n            } catch (error) {\n                console.error('Ошибка загрузки новостей:', error);\n            }\n        }\n\n        // Загружаем новости при загрузке страницы\n        document.addEventListener('DOMContentLoaded', loadNews);\n    </script>\n</body>\n</html>
+    fetch('news.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.querySelector('.news-container');
+            container.innerHTML = ''; // Очищаем контейнер
+
+            data.forEach(news => {
+                const newsItem = `
+                    <div class="news-item">
+                        <p><strong>${news.title}</strong><br>${news.content}</p>
+                    </div>
+                `;
+                container.innerHTML += newsItem;
+            });
+        });
+</script>
+
+</body>
+</html>
