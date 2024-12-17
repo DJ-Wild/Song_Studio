@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #000000, #00FF00);
+            background-size: 400% 400%;
+            animation: gradient 6s ease infinite;
+            color: white;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            text-shadow: 2px 2px 4px #00FF00;
+            margin: 0;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" id="news">Новости</a>
+        <a href="#" id="schedule">График выхода песен</a>
+    </nav>
+    <h1>Добро пожаловать на главную страницу</h1>
+</body>
+</html>
