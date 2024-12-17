@@ -8,24 +8,42 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #000000, #00FF00);
             color: white;
             text-align: center;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 60px; /* Отступ от шапки */
+            background: linear-gradient(135deg, #000000, #00FF00); /* начальный фон */
+            animation: backgroundAnimation 10s infinite alternate; /* анимация фона */
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, #000000, #00FF00);
+            }
+            25% {
+                background: linear-gradient(135deg, #00FF00, #0000FF);
+            }
+            50% {
+                background: linear-gradient(135deg, #0000FF, #FF00FF);
+            }
+            75% {
+                background: linear-gradient(135deg, #FF00FF, #FF0000);
+            }
+            100% {
+                background: linear-gradient(135deg, #FF0000, #000000);
+            }
         }
 
         nav {
-            background: black;
-            width: 100%;
-            padding: 10px 0;
             position: absolute;
             top: 0;
+            width: 100%;
+            background: black;
             display: flex;
             justify-content: center;
+            padding: 10px 0;
         }
 
         nav a {
@@ -41,21 +59,20 @@
         }
 
         h1 {
-            margin: 20px 0;
             font-size: 2.5em;
+            margin: 100px 0 20px;
         }
 
         .news-container {
-            margin-top: 100px;
             width: 80%;
             max-width: 600px;
             text-align: left;
         }
 
         .news-item {
-            background: #444;
-            padding: 20px;
-            border-radius: 15px;
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
@@ -70,6 +87,7 @@
             margin: 10px 0;
             font-size: 1.2em;
         }
+
     </style>
 </head>
 <body>
