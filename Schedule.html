@@ -18,7 +18,7 @@
             background-size: 400% 400%;
             animation: gradient 6s ease infinite;
             color: white;
-            opacity: 1; /* Для анимации прозрачности */\n            transition: opacity 0.5s ease; /* Плавность перехода */\n        }
+            opacity: 1; /* Стартовое значение прозрачности */\n            transition: opacity 0.5s ease; /* Анимация прозрачности */\n        }
 
         @keyframes gradient {
             0% {
@@ -44,23 +44,10 @@
 
         nav a {
             color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
+            text-decoration: none;\n            font-size: 1.2em;\n            margin: 0 15px;\n            transition: color 0.3s ease;\n            cursor: pointer;\n        }
 
         nav a:hover {
-            color: #00FF00;
-        }
-
-        h1 {
-            font-size: 2em;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+            color: #00FF00;\n        }\n\n        h1 {\n            font-size: 2em;\n            font-weight: bold;\n            text-align: center;\n            margin-bottom: 20px;\n        }
 
         .song-info {
             background-color: #444;
@@ -82,33 +69,4 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const links = document.querySelectorAll("nav a");
-            links.forEach(link => {
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Отключаем мгновенный переход
-                    const target = link.getAttribute("href"); // Получаем ссылку
-
-                    // Анимация исчезновения
-                    document.body.style.opacity = "0";
-
-                    setTimeout(() => {
-                        window.location.href = target; // Переход на новую страницу
-                    }, 500); // Время должно совпадать с transition в CSS
-                });
-            });
-        });
-    </script>
-</head>
-<body>
-    <nav>
-        <a href="https://dj-wild.github.io/Song_Studio/">Главная</a>
-        <a href="https://dj-wild.github.io/Song_Studio/News.html">Новости</a>
-    </nav>
-    <h1>Очень скоро...</h1>
-    <div class="song-info">
-        <h2>Я буду знать</h2>
-        <p>1.1.24 - 8.1.24</p>
-    </div>
-</body>
-</html>
+        document.addEventListener(\"DOMContentLoaded\", () => {\n            const links = document.querySelectorAll(\"nav a\");\n            links.forEach(link => {\n                link.addEventListener(\"click\", (event) => {\n                    event.preventDefault(); // Отключаем мгновенный переход\n                    const target = link.getAttribute(\"href\"); // Получаем ссылку\n\n                    // Анимация исчезновения\n                    document.body.style.opacity = \"0\";\n\n                    setTimeout(() => {\n                        window.location.href = target; // Переход на новую страницу\n                    }, 500); // Время должно совпадать с transition в CSS\n                });\n            });\n        });\n    </script>\n</head>\n<body>\n    <nav>\n        <a href=\"https://dj-wild.github.io/Song_Studio/\">Главная</a>\n        <a href=\"https://dj-wild.github.io/Song_Studio/News.html\">Новости</a>\n    </nav>\n    <h1>Очень скоро...</h1>\n    <div class=\"song-info\">\n        <h2>Я буду знать</h2>\n        <p>1.1.24 - 8.1.24</p>\n    </div>\n</body>\n</html>
