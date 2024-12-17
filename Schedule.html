@@ -18,7 +18,7 @@
             background-size: 400% 400%;
             animation: gradient 6s ease infinite;
             color: white;
-        }
+            opacity: 1; /* Для анимации прозрачности */\n            transition: opacity 0.5s ease; /* Плавность перехода */\n        }
 
         @keyframes gradient {
             0% {
@@ -48,6 +48,7 @@
             font-size: 1.2em;
             margin: 0 15px;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -80,6 +81,24 @@
             margin: 5px 0 0;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll("nav a");
+            links.forEach(link => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault(); // Отключаем мгновенный переход
+                    const target = link.getAttribute("href"); // Получаем ссылку
+
+                    // Анимация исчезновения
+                    document.body.style.opacity = "0";
+
+                    setTimeout(() => {
+                        window.location.href = target; // Переход на новую страницу
+                    }, 500); // Время должно совпадать с transition в CSS
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <nav>
