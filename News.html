@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-top: 60px; /* Отступ от шапки */
         }
 
         nav {
@@ -39,6 +40,11 @@
             color: #00FF00;
         }
 
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+
         .news-container {
             margin-top: 100px;
             width: 80%;
@@ -47,14 +53,22 @@
         }
 
         .news-item {
-            background: #333;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            background: #444;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            margin: 20px 0;
+        .news-item h2 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #00FF00;
+        }
+
+        .news-item p {
+            margin: 10px 0;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -69,23 +83,35 @@
     <h1>Новости</h1>
 
     <!-- Контейнер новостей -->
+    <div class="news-container">
+        <!-- Новости будут загружаться сюда -->
+    </div>
+
     <script>
-    fetch('news.json')
+    // Получаем данные из файла news.json на GitHub Pages
+    fetch('https://dj-wild.github.io/Song_Studio/news.json')  // Убедись, что путь правильный
         .then(response => response.json())
         .then(data => {
             const container = document.querySelector('.news-container');
-            container.innerHTML = ''; // Очищаем контейнер
+            container.innerHTML = ''; // Очищаем контейнер перед добавлением новых новостей
 
+            // Проходим по всем новостям и добавляем их в контейнер
             data.forEach(news => {
                 const newsItem = `
                     <div class="news-item">
-                        <p><strong>${news.title}</strong><br>${news.content}</p>
+                        <h2>${news.title}</h2>
+                        <p>${news.content}</p>
                     </div>
                 `;
                 container.innerHTML += newsItem;
             });
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке новостей:', error);
+            const container = document.querySelector('.news-container');
+            container.innerHTML = '<p>Не удалось загрузить новости. Попробуйте позже.</p>';
         });
-</script>
+    </script>
 
 </body>
 </html>
