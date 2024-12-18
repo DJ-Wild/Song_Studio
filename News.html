@@ -7,20 +7,27 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-            height: 100vh;
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #000000, #00FF00); /* начальный фон */
-            animation: backgroundAnimation 10s infinite alternate; /* анимация фона */
+            height: 100vh;
+            background: linear-gradient(135deg, #000000, #00FF00);
+            background-size: 400% 400%;
+            animation: gradient 6s ease infinite;
+            color: white;
         }
 
-        @keyframes backgroundAnimation {
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
             100% {
-                background: linear-gradient(135deg, #000000, #00FF00);
+                background-position: 0% 50%;
             }
         }
 
