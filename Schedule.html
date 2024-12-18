@@ -7,16 +7,29 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #000000, #00FF00);
-            color: white;
-            height: 100vh;
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #000000, #00FF00);
+            background-size: 400% 400%;
+            animation: gradient 6s ease infinite;
+            color: white;
         }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+                }
         nav {
             position: absolute;
             top: 0;
