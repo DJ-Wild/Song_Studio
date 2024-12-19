@@ -102,28 +102,29 @@
 
     <script>
     // Получаем данные из файла news.json на GitHub Pages
-    fetch('https://dj-wild.github.io/Song_Studio/news.json')  // Убедись, что путь правильный
-        .then(response => response.json())
-        .then(data => {
-            const container = document.querySelector('.news-container');
-            container.innerHTML = ''; // Очищаем контейнер перед добавлением новых новостей
+    fetch('https://dj-wild.github.io/Song_Studio/news.json?' + new Date().getTime())
+    .then(response => response.json())
+    .then(data => {
+        const container = document.querySelector('.news-container');
+        container.innerHTML = ''; // Очищаем контейнер перед добавлением новых новостей
 
-            // Проходим по всем новостям и добавляем их в контейнер
-            data.forEach(news => {
-                const newsItem = `
-                    <div class="news-item">
-                        <h2>${news.title}</h2>
-                        <p>${news.content}</p>
-                    </div>
-                `;
-                container.innerHTML += newsItem;
-            });
-        })
-        .catch(error => {
-            console.error('Ошибка при загрузке новостей:', error);
-            const container = document.querySelector('.news-container');
-            container.innerHTML = '<p>Не удалось загрузить новости. Попробуйте позже.</p>';
+        // Проходим по всем новостям и добавляем их в контейнер
+        data.forEach(news => {
+            const newsItem = `
+                <div class="news-item">
+                    <h2>${news.title}</h2>
+                    <p>${news.content}</p>
+                </div>
+            `;
+            container.innerHTML += newsItem;
         });
+    })
+    .catch(error => {
+        console.error('Ошибка при загрузке новостей:', error);
+        const container = document.querySelector('.news-container');
+        container.innerHTML = '<p>Не удалось загрузить новости. Попробуйте позже.</p>';
+    });
+
     </script>
 
 </body>
