@@ -625,8 +625,9 @@ def check_user(user_id):
 # Если пользователь найден, вернуть True, иначе False
     return result is not None
 
-token = '7779850217:AAH2y0hFOs8UUQhmYbKbE7UW5orp1klKX2s'
-bot = telebot.TeleBot('7779850217:AAH2y0hFOs8UUQhmYbKbE7UW5orp1klKX2s')
+token = '7808319236:AAHc37Iyv_7cVSDyC026JjSQIRv6JjuNyfk'
+bot = telebot.TeleBot('7808319236:AAHc37Iyv_7cVSDyC026JjSQIRv6JjuNyfk')
+MODERATOR_USER_ID = "5767007798"
 
 create_db()
 
@@ -644,6 +645,11 @@ def handle_checkme(message):
 def main(message):
     user_id = message.from_user.id
     if check_user(user_id):
+        username = message.from_user.username if message.from_user.username else "Неизвестно"
+        bot.send_message(
+            MODERATOR_USER_ID,  # Отправляем в личные сообщения модератору
+            f"""Пользователь: @{username}"""
+        )
         bot.send_message(message.chat.id, '''• ВЫБЕРИТЕ ИНТЕРЕСУЮЩИЙ РАЗДЕЛ • ''', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Доступ запрещен")
